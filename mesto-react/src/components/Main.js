@@ -21,18 +21,11 @@ function Main(props) {
     api
       .getInitialCards()
       .then((res) => {
-        const cards = res.map((card) => {
-          return {
-            name: card.name,
-            link: card.link,
-            likes: card.likes.length,
-            _id: card._id,
-          };
-        });
-        setCards(cards);
+        setCards(res);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, []); 
+
 
   return (
     <main className="content">
@@ -68,8 +61,8 @@ function Main(props) {
       </section>
       <section className="elements">
         <ul className="elements__list">
-          {cards.map((card) => (
-            <Card key={card._id} {...card} onCardClick={props.onCardClick} />
+          {cards.map((item) => (
+            <Card key={item._id} {...item} onCardClick={props.onCardClick} />
           ))}
         </ul>
       </section>
@@ -78,3 +71,19 @@ function Main(props) {
 }
 
 export default Main;
+/*  React.useEffect(() => {
+    api
+      .getInitialCards()
+      .then((res) => {
+        const cards = res.map((card) => {
+          return {
+            name: card.name,
+            link: card.link,
+            likes: card.likes.length,
+            _id: card._id,
+          };
+        });
+        setCards(cards);
+      })
+      .catch((err) => console.log(err));
+  }, []); */

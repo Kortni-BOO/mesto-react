@@ -28,9 +28,11 @@ function Card(props) {
         className="element__button-like"
         aria-label="like"
       ></button>
-      <h3 className="element__count">{props.likes}</h3>
+      <h3 className="element__count">{props.likes.length}</h3>
     </li>
   );
 }
 
 export default Card;
+//style={{ backgroundImage: `url(${props.card.link})` }}
+//src={props.link}
