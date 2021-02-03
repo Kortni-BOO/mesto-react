@@ -13,7 +13,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
     false
   );
-  const [isAddPlasePopupOpen, setIsAddPlasePopupOpen] = React.useState(false);
+  
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   function handleEditAvatarClick() {
@@ -23,13 +24,13 @@ function App() {
     setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    setIsAddPlasePopupOpen(true);
+    setIsAddPlacePopupOpen(true);
   }
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
-    setIsAddPlasePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
     setIsImagePopupOpen(false);
   }
 
@@ -107,7 +108,7 @@ function App() {
       <PopupWithForm
         name="profile-add"
         title="Новое место"
-        isOpen={isAddPlasePopupOpen}
+        isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       >
         <fieldset
