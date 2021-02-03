@@ -38,7 +38,6 @@ class Api {
                 avatar: data.avatar,
             }),
         }).then(handleOriginalResponse);
-        //(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
 
     getInitialCards() {
