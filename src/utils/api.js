@@ -17,12 +17,7 @@ class Api {
             headers: {
                 authorization: this._token,
             },
-        }).then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            return Promise.reject(`Error ${response.status}`);
-        });
+        }).then(handleOriginalResponse);
     }
 
     editUserInformation(data) {
@@ -59,7 +54,6 @@ class Api {
                 link: data.link,
             }),
         }).then(handleOriginalResponse);
-        //(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
     removeCard(id) {
         return fetch(`${this._address}/v1/${this._groupId}/cards/${id}`, {
@@ -69,7 +63,6 @@ class Api {
                 "Content-Type": "application/json",
             },
         }).then(handleOriginalResponse);
-        //(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
 
     editAvatarUser(data) {
@@ -84,7 +77,7 @@ class Api {
             }),
         }).then(handleOriginalResponse);
     }
-
+/*
     removeLike(id) {
         return fetch(`${this._address}/v1/${this._groupId}/cards/likes/${id}`, {
             method: "DELETE",
@@ -95,16 +88,26 @@ class Api {
         }).then(handleOriginalResponse);
         //(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
+*/
+    changeLikeCardStatus(id, isLiked) {
+        if(isLiked){
+            return fetch(`${this._address}/v1/${this._groupId}/cards/likes/${id}`, {
+                method: "PUT",
+                headers: {
+                    authorization: this._token,
+                    "Content-Type": "application/json",
+                },
+            }).then(handleOriginalResponse);
+        } else {
+            return fetch(`${this._address}/v1/${this._groupId}/cards/likes/${id}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: this._token,
+                    "Content-Type": "application/json",
+                },
+            }).then(handleOriginalResponse);
+        }
 
-    addLike(id) {
-        return fetch(`${this._address}/v1/${this._groupId}/cards/likes/${id}`, {
-            method: "PUT",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
-        }).then(handleOriginalResponse);
-        //(result => result.ok ? result.json() : Promise.reject(`Ошибка ${result.status}`))
     }
 }
 

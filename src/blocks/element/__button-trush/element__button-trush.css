@@ -1,5 +1,5 @@
-.element__button-trush {
-    /*display: none;*/
+.element__button-trash {
+    display: none;
     position: absolute;
     top: 2px;
     left: 1px;
@@ -16,7 +16,15 @@
     
 }
 
-.element__button-trush:hover {
+.element__button-trash:hover {
     opacity: 0.6;
     transition: .5s linear;
+}
+
+.element__button-trash_visible {
+    display: block;
+}
+  
+.element__button-trash_hidden {
+    display: none;
 }
